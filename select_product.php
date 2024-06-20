@@ -5,7 +5,7 @@ include 'db.php';
 $conn = getDbConnection();
 
 // Obtener las tablas y sus modelos
-$tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'DC908', 'E66', 'NE40E'];
+$tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'DC908', 'E66', 'NE40E', 'ONT'];
 $products = [];
 
 foreach ($tables as $table) {

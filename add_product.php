@@ -23,6 +23,7 @@
                 <option value="DC908">DC908</option>
                 <option value="E66">E66</option>
                 <option value="NE40E">NE40E</option>
+                <option value="ONT">ONT</option>
             </select><br>
 
             <label for="Model">Model:</label>
