@@ -14,6 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fan_pn = $_POST['Fan_PN'];
     $cabinet_pn = $_POST['Cabinet_PN'];
 
+    // Verificar y crear el directorio uploads si no existe
+    if (!is_dir('uploads')) {
+        mkdir('uploads', 0777, true);
+    }
+
     // Manejar las imágenes y el PDF
     function uploadFile($fieldName, $allowedTypes) {
         if (isset($_FILES[$fieldName]) && $_FILES[$fieldName]['error'] == UPLOAD_ERR_OK) {

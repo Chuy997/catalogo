@@ -49,7 +49,8 @@ $result = $conn->query($sql);
                 <td><?php echo $row['Cabinet PN Image'] ? '<img src="' . $row['Cabinet PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Instructivo'] ? '<a href="' . $row['Instructivo'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
             </tr>
-        <?php endwhile; ?>
+        <?php endwhile; 
+        ?>
     </tbody>
 </table>
 

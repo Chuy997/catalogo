@@ -1,96 +1,133 @@
+/* General Styles */
 body {
     background-color: #121212;
     color: #ffffff;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Header Styles */
 header {
     background-color: #1f1f1f;
+    width: 100%;
     padding: 10px 0;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     text-align: center;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #bbbbbb;
 }
 
+/* Main Content Styles */
 main {
     padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%; 
+    text-align: center;
 }
 
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Product Grid Styles */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajustar el tamaño mínimo para aplicar la proporción áurea */
+    gap: 30px; /* Ajustar el espacio entre los elementos */
+    justify-items: center;
+}
+
+.product-item {
+    background-color: #1f1f1f;
+    padding: 30px 18px; /* Proporción áurea: 1.618 (altura) */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s;
+    border: 2px solid #333; /* Asegurar que la separación sea visible */
+}
+
+.product-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-item:hover {
+    background-color: #333;
+}
+
+.product-item a:hover {
+    color: #bbbbbb;
+}
+
+/* Form Styles */
 form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
 }
 
 label {
-    margin-top: 10px;
+    margin: 10px 0 5px;
+    width: 100%;
+    text-align: left;
 }
 
 input[type="text"],
 input[type="file"],
 select {
-    margin-top: 5px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button {
-    margin-top: 20px;
     padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-footer {
-    background-color: #1f1f1f;
-    padding: 10px 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
     width: 100%;
 }
 
-.product-links {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    text-align: center;
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6200ee;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
 }
 
-.product-links a {
-    background-color: #282828;
-    color: #ffffff;
-    padding: 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.product-links a:hover {
-    background-color: #383838;
+button:hover {
+    background-color: #3700b3;
 }

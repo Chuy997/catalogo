@@ -1,20 +1,38 @@
-<?php include 'header.php'; ?>
+<?php
+require_once 'db.php';
 
-<h1>Bienvenido al Panel de Administración</h1>
-<div class="product-links">
-    <a href="osn.php">OSN</a>
-    <a href="rtn.php">RTN</a>
-    <a href="ne8000.php">NE8000</a>
-    <a href="bbu.php">BBU</a>
-    <a href="s12700e.php">S12700E</a>
-    <a href="ea5800.php">EA5800</a>
-    <a href="ma58.php">MA58</a>
-    <a href="atn.php">ATN</a>
-    <a href="dc908.php">DC908</a>
-    <a href="e66.php">E66</a>
-    <a href="ne40e.php">NE40E</a>
-    <a href="ont.php">ONT</a>
-    <!-- Los nuevos enlaces se agregarán aquí -->
-</div>
+// Asumiendo que tienes una función para obtener los nombres de las tablas
+$tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'DC908', 'E66', 'NE40E','ONT'];
+?>
 
-<?php include 'footer.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="add_product.php">Agregar Producto</a></li>
+                <li><a href="update_product.php">Actualizar Producto</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Página Principal</h1>
+        <div class="product-grid">
+            <?php foreach ($tables as $table): ?>
+                <div class="product-item">
+                    <a href="<?php echo strtolower($table); ?>.php"><?php echo $table; ?></a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+</body>
+</html>
