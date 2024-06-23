@@ -3,11 +3,11 @@ include 'header.php';
 include 'db.php';
 
 $conn = getDbConnection();
-$sql = "SELECT * FROM NE8000";
+$sql = "SELECT * FROM MA58";
 $result = $conn->query($sql);
 ?>
 
-<h1>NE8000 Productos</h1>
+<h1>MA58 Productos</h1>
 
 <!-- Barra de búsqueda para filtrar modelos -->
 <input type="text" id="search" placeholder="Buscar en cualquier campo..." onkeyup="filterTable()">

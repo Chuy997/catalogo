@@ -25,7 +25,7 @@ $tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'D
         </nav>
     </header>
     <main>
-        <h1>Página Principal</h1>
+        <h1>Catalogo ATO</h1>
         <div class="product-grid">
             <?php foreach ($tables as $table): ?>
                 <div class="product-item">
