@@ -25,6 +25,7 @@ $result = $conn->query($sql);
             <th>Power Connector PN Image</th>
             <th>Cabinet PN Image</th>
             <th>Instructivo</th>
+            <th>Instructivo Ensamble</th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +41,7 @@ $result = $conn->query($sql);
                 <td><?php echo $row['Power Connector PN Image'] ? '<img src="' . $row['Power Connector PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Cabinet PN Image'] ? '<img src="' . $row['Cabinet PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Instructivo'] ? '<a href="' . $row['Instructivo'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
+                <td><?php echo $row['Instructivo_A'] ? '<a href="' . $row['Instructivo_A'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
             </tr>
         <?php endwhile; 
         ?>

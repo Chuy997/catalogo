@@ -19,16 +19,13 @@ $result = $conn->query($sql);
             <th>Chassis PN</th>
             <th>Main Board PN</th>
             <th>Power Board PN</th>
-            <th>Power Connector PN</th>
-            <th>Fan PN</th>
-            <th>Cabinet PN</th>
+            <th>Power Connector PN</th>    
             <th>Chassis PN Image</th>
             <th>Main Board PN Image</th>
             <th>Power Board PN Image</th>
             <th>Power Connector PN Image</th>
-            <th>Fan PN Image</th>
-            <th>Cabinet PN Image</th>
             <th>Instructivo</th>
+            <th>Instructivo Ensamble</th>
         </tr>
     </thead>
     <tbody>
@@ -39,15 +36,12 @@ $result = $conn->query($sql);
                 <td><?php echo $row['Main Board PN']; ?></td>
                 <td><?php echo $row['Power Board PN']; ?></td>
                 <td><?php echo $row['Power Connector PN']; ?></td>
-                <td><?php echo $row['Fan PN']; ?></td>
-                <td><?php echo $row['Cabinet PN']; ?></td>
                 <td><?php echo $row['Chassis PN Image'] ? '<img src="' . $row['Chassis PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Main Board PN Image'] ? '<img src="' . $row['Main Board PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Power Board PN Image'] ? '<img src="' . $row['Power Board PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Power Connector PN Image'] ? '<img src="' . $row['Power Connector PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
-                <td><?php echo $row['Fan PN Image'] ? '<img src="' . $row['Fan PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
-                <td><?php echo $row['Cabinet PN Image'] ? '<img src="' . $row['Cabinet PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Instructivo'] ? '<a href="' . $row['Instructivo'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
+                <td><?php echo $row['Instructivo_A'] ? '<a href="' . $row['Instructivo_A'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
             </tr>
         <?php endwhile; 
         ?>

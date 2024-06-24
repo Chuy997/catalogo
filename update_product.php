@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fan_pn_image = uploadFile('Fan_PN_Image', ['image/jpeg', 'image/png']);
     $cabinet_pn_image = uploadFile('Cabinet_PN_Image', ['image/jpeg', 'image/png']);
     $instructivo = uploadFile('Instructivo', ['application/pdf']);
+    $instructivo_a = uploadFile('Instructivo_A', ['application/pdf']);
 
     // Actualizar el producto existente basado en el modelo
     $sql = "UPDATE $table SET 
@@ -57,12 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 `Power Connector PN Image` = IFNULL(?, `Power Connector PN Image`),
                 `Fan PN Image` = IFNULL(?, `Fan PN Image`),
                 `Cabinet PN Image` = IFNULL(?, `Cabinet PN Image`),
-                `Instructivo` = IFNULL(?, `Instructivo`)
+                `Instructivo` = IFNULL(?, `Instructivo`),
+                `Instructivo_A` = IFNULL(?, `Instructivo_A`)
             WHERE `Model` = ?";
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        "ssssssssssssss",
+        "sssssssssssssss",
         $chassis_pn,
         $main_board_pn,
         $power_board_pn,
@@ -76,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fan_pn_image,
         $cabinet_pn_image,
         $instructivo,
+        $instructivo_a,
         $model
     );
 
@@ -158,6 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <label for="Instructivo">Instructivo (PDF):</label>
             <input type="file" id="Instructivo" name="Instructivo" accept="application/pdf"><br>
+
+            <label for="Instructivo_A">Instructivo Ensamble (PDF):</label>
+            <input type="file" id="Instructivo_A" name="Instructivo_A" accept="application/pdf"><br>
 
             <button type="submit">Actualizar Producto</button>
         </form>

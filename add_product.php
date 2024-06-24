@@ -67,6 +67,9 @@ require_once 'db.php';
             <label for="Instructivo">Instructivo (PDF):</label>
             <input type="file" id="Instructivo" name="Instructivo" accept="application/pdf"><br>
 
+            <label for="Instructivo_A">Instructivo Ensamble (PDF):</label>
+            <input type="file" id="Instructivo_A" name="Instructivo_A" accept="application/pdf"><br>
+
             <button type="submit">Agregar Producto</button>
         </form>
     </main>
