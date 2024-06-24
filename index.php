@@ -36,3 +36,6 @@ $tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'D
     </main>
 </body>
 </html>
+<?php
+require_once 'footer.php'
+?>
