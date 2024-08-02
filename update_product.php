@@ -46,21 +46,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Actualizar el producto existente basado en el modelo
     $sql = "UPDATE $table SET 
-                `Chassis PN` = ?, 
-                `Main Board PN` = ?, 
-                `Power Board PN` = ?, 
-                `Power Connector PN` = ?, 
-                `Fan PN` = ?, 
-                `Cabinet PN` = ?,
-                `Chassis PN Image` = IFNULL(?, `Chassis PN Image`),
-                `Main Board PN Image` = IFNULL(?, `Main Board PN Image`),
-                `Power Board PN Image` = IFNULL(?, `Power Board PN Image`),
-                `Power Connector PN Image` = IFNULL(?, `Power Connector PN Image`),
-                `Fan PN Image` = IFNULL(?, `Fan PN Image`),
-                `Cabinet PN Image` = IFNULL(?, `Cabinet PN Image`),
-                `Instructivo` = IFNULL(?, `Instructivo`),
-                `Instructivo_A` = IFNULL(?, `Instructivo_A`)
-            WHERE `Model` = ?";
+                chassis_pn = ?, 
+                main_board_pn = ?, 
+                power_board_pn = ?, 
+                power_connector_pn = ?, 
+                fan_pn = ?, 
+                cabinet_pn = ?,
+                chassis_pn_image = IFNULL(?, chassis_pn_image),
+                main_board_pn_image = IFNULL(?, main_board_pn_image),
+                power_board_pn_image = IFNULL(?, power_board_pn_image),
+                power_connector_pn_image = IFNULL(?, power_connector_pn_image),
+                fan_pn_image = IFNULL(?, fan_pn_image),
+                cabinet_pn_image = IFNULL(?, cabinet_pn_image),
+                instructivo = IFNULL(?, instructivo),
+                instructivo_a = IFNULL(?, instructivo_a)
+            WHERE model = ?";
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(

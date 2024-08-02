@@ -40,15 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fan_pn_image = uploadFile('Fan_PN_Image', ['image/jpeg', 'image/png']);
     $cabinet_pn_image = uploadFile('Cabinet_PN_Image', ['image/jpeg', 'image/png']);
     $instructivo = uploadFile('Instructivo', ['application/pdf']);
+    $instructivo_a = uploadFile('Instructivo_A', ['application/pdf']);
 
     // Insertar nuevo producto con imágenes opcionales y PDF
     $sql = "INSERT INTO $table 
-                (Model, `Chassis PN`, `Main Board PN`, `Power Board PN`, `Power Connector PN`, `Fan PN`, `Cabinet PN`, `Chassis PN Image`, `Main Board PN Image`, `Power Board PN Image`, `Power Connector PN Image`, `Fan PN Image`, `Cabinet PN Image`, `Instructivo`) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (Model, Chassis_PN, Main_Board_PN, Power_Board_PN, Power_Connector_PN, Fan_PN, Cabinet_PN, Chassis_PN_Image, Main_Board_PN_Image, Power_Board_PN_Image, Power_Connector_PN_Image, Fan_PN_Image, Cabinet_PN_Image, Instructivo, Instructivo_A) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        "ssssssssssssss",
+        "sssssssssssssss",
         $model,
         $chassis_pn,
         $main_board_pn,
@@ -62,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $power_connector_pn_image,
         $fan_pn_image,
         $cabinet_pn_image,
-        $instructivo
+        $instructivo,
+        $instructivo_a
     );
 
     if ($stmt->execute()) {
