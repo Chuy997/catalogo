@@ -3,6 +3,35 @@ require_once 'db.php';
 
 // Asumiendo que tienes una función para obtener los nombres de las tablas
 $tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'DC908', 'E66', 'NE40E','ONT'];
+
+// Si hay un código SW enviado por POST, realizar la validación
+$validationMessage = '';
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sw_code'])) {
+    $sw_code = $_POST['sw_code'];
+    $conn = getDbConnection(); // Función definida en db.php
+
+    // Cambiar a la base de datos software_db
+    $conn->select_db('software_db');
+
+    // Consulta a la tabla 'software' en la base de datos 'software_db'
+    $sql = "SELECT product FROM software WHERE sw_code = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $sw_code);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // SW code encontrado
+        $row = $result->fetch_assoc();
+        $validationMessage = '<span class="success-message">Código SW encontrado. Producto: ' . $row['product'] . '</span>';
+    } else {
+        // SW code no encontrado
+        $validationMessage = '<span class="error-message">Código SW no encontrado.</span>';
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +62,24 @@ $tables = ['OSN', 'RTN', 'NE8000', 'BBU', 'S12700E', 'EA5800', 'MA58', 'ATN', 'D
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <!-- Formulario de validación de SW code -->
+        <div class="validation-form">
+            <form method="POST" action="index.php">
+                <label for="sw_code">Ingrese SW code:</label>
+                <input type="text" id="sw_code" name="sw_code" required>
+                <button type="submit">Validacion</button>
+            </form>
+            <?php
+            // Mostrar el mensaje de validación si existe
+            if (!empty($validationMessage)) {
+                echo $validationMessage;
+            }
+            ?>
+        </div>
     </main>
 </body>
 </html>
 <?php
-require_once 'footer.php'
+require_once 'footer.php';
 ?>

@@ -2,7 +2,7 @@
 body {
     background-color: #121212;
     color: #ffffff;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -15,7 +15,7 @@ body {
 header {
     background-color: #1f1f1f;
     width: 100%;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 nav ul {
@@ -26,13 +26,14 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
@@ -41,33 +42,38 @@ nav ul li a:hover {
 
 /* Main Content Styles */
 main {
-    padding: 20px;
+    padding: 40px 20px;
     max-width: 1200px;
     width: 100%; 
     text-align: center;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* Product Grid Styles */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajustar el tamaño mínimo para aplicar la proporción áurea */
-    gap: 30px; /* Ajustar el espacio entre los elementos */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
     justify-items: center;
 }
 
 .product-item {
     background-color: #1f1f1f;
-    padding: 30px 18px; /* Proporción áurea: 1.618 (altura) */
+    padding: 20px 12px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     text-align: center;
     width: 100%;
-    transition: background-color 0.3s;
-    border: 2px solid #333; /* Asegurar que la separación sea visible */
+    transition: background-color 0.3s, transform 0.3s;
+    border: 1px solid #333;
+}
+
+.product-item:hover {
+    background-color: #333;
+    transform: translateY(-5px);
 }
 
 .product-item a {
@@ -75,10 +81,10 @@ h1 {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-}
-
-.product-item:hover {
-    background-color: #333;
+    transition: color 0.3s;
+    display: block; /* Hace que el enlace ocupe todo el área del producto */
+    height: 100%; /* Asegura que el enlace ocupe toda la altura del producto */
+    width: 100%; /* Asegura que el enlace ocupe toda la anchura del producto */
 }
 
 .product-item a:hover {
@@ -91,16 +97,16 @@ form {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px;
     background-color: #1f1f1f;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     max-width: 600px;
     width: 100%;
 }
 
 label {
-    margin: 10px 0 5px;
+    margin: 15px 0 5px;
     width: 100%;
     text-align: left;
 }
@@ -117,8 +123,9 @@ select {
     width: 100%;
 }
 
+/* Button Styles */
 button {
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 4px;
     background-color: #6200ee;
@@ -126,8 +133,101 @@ button {
     font-size: 16px;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
     background-color: #3700b3;
+    transform: translateY(-3px);
+}
+
+/* Link as Button */
+a.button-link {
+    display: inline-block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #6200ee;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none; /* Sin subrayado */
+}
+
+a.button-link:hover {
+    background-color: #3700b3;
+    transform: translateY(-3px);
+    color: #fff; /* Mantener el texto blanco */
+}
+/* Validation Form Styles */
+/* Estilos para el formulario de validación */
+.validation-form {
+    margin-top: 20px; /* Espacio superior */
+    padding: 10px; /* Espaciado interno */
+    background-color:  #121212; /* Fondo oscuro */
+    border-radius: 8px; /* Bordes redondeados */   
+    text-align: center; /* Centrar texto */
+}
+
+.validation-form form {
+    display: flex; /* Usar flexbox para layout del formulario */
+    flex-direction: column; /* Disposición vertical de los elementos */
+    align-items: center; /* Centrar elementos horizontalmente */
+}
+
+.validation-form label {
+    margin-bottom: 10px; /* Espacio debajo de la etiqueta */
+    color: #fff; /* Color blanco para la etiqueta */
+    text-align: center;
+}
+
+.validation-form input[type="text"] {
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio debajo del campo */
+    border: 1px solid #333; /* Borde del campo */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #333; /* Fondo oscuro */    
+    color: #fff; /* Texto blanco */
+    width: 100%; /* Ancho completo del campo */
+    max-width: 400px; /* Ancho máximo del campo */
+}
+
+.validation-form button {
+    padding: 12px; /* Espaciado interno */
+    border: none; /* Quitar borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #6200ee; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    font-size: 16px; /* Tamaño de la fuente del botón */
+    cursor: pointer; /* Cambia el cursor al pasar por el botón */
+    width: 100%; /* Ancho completo del botón */
+    max-width: 200px; /* Ancho máximo del botón */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves para cambios de estilo */
+}
+
+.validation-form button:hover {
+    background-color: #3700b3; /* Color de fondo al pasar el ratón */
+    transform: translateY(-3px); /* Mover el botón hacia arriba al pasar el ratón */
+}
+
+/* Estilos para mensajes de validación */
+.success-message {
+    color: #4CAF50; /* Color verde para mensaje de éxito */
+    margin-top: 20px; /* Espacio superior */
+}
+
+.error-message {
+    color: #f44336; /* Color rojo para mensaje de error */
+    margin-top: 20px; /* Espacio superior */
+}
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #121212;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    /* Posicionar el footer al final del contenido, pero no fijo al fondo de la página */
 }

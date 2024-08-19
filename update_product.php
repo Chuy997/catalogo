@@ -4,96 +4,145 @@ require_once 'db.php';
 
 $conn = getDbConnection();
 
+// Obtener la lista de tablas para el dropdown
+$tables = ['atn', 'bbu', 'dc908', 'e66', 'ea5800', 'ma58', 'ne40e', 'ne8000', 'ont', 'osn', 'rtn', 's12700e'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $table = $_POST['table'];
     $model = $_POST['Model'];
-    $chassis_pn = $_POST['Chassis_PN'];
-    $main_board_pn = $_POST['Main_Board_PN'];
-    $power_board_pn = $_POST['Power_Board_PN'];
-    $power_connector_pn = $_POST['Power_Connector_PN'];
-    $fan_pn = $_POST['Fan_PN'];
-    $cabinet_pn = $_POST['Cabinet_PN'];
 
-    // Verificar y crear el directorio uploads si no existe
-    if (!is_dir('uploads')) {
-        mkdir('uploads', 0777, true);
-    }
+    if (in_array($table, $tables)) {
+        // Consultar la información actual del modelo seleccionado
+        $sql = "SELECT * FROM $table WHERE Model = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $model);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $current_data = $result->fetch_assoc();
 
-    // Manejar las imágenes y el PDF
-    function uploadFile($fieldName, $allowedTypes) {
-        if (isset($_FILES[$fieldName]) && $_FILES[$fieldName]['error'] == UPLOAD_ERR_OK) {
-            $fileType = mime_content_type($_FILES[$fieldName]['tmp_name']);
-            if (in_array($fileType, $allowedTypes)) {
-                $fileName = basename($_FILES[$fieldName]['name']);
-                $filePath = 'uploads/' . $fileName;
-                if (move_uploaded_file($_FILES[$fieldName]['tmp_name'], $filePath)) {
-                    return $filePath;
-                }
+        if ($result->num_rows > 0) {
+            $fields = [];
+            $params = [];
+            $types = '';
+
+            // Recoger los datos del formulario y agregar solo los campos que han sido proporcionados
+            if (!empty($_POST['Chassis_PN'])) {
+                $fields[] = "Chassis_PN = ?";
+                $params[] = $_POST['Chassis_PN'];
+                $types .= 's';
             }
+            if (!empty($_POST['Main_Board_PN'])) {
+                $fields[] = "Main_Board_PN = ?";
+                $params[] = $_POST['Main_Board_PN'];
+                $types .= 's';
+            }
+            if (!empty($_POST['Power_Board_PN'])) {
+                $fields[] = "Power_Board_PN = ?";
+                $params[] = $_POST['Power_Board_PN'];
+                $types .= 's';
+            }
+            if (!empty($_POST['Power_Connector_PN'])) {
+                $fields[] = "Power_Connector_PN = ?";
+                $params[] = $_POST['Power_Connector_PN'];
+                $types .= 's';
+            }
+            if (!empty($_POST['Fan_PN'])) {
+                $fields[] = "Fan_PN = ?";
+                $params[] = $_POST['Fan_PN'];
+                $types .= 's';
+            }
+            if (!empty($_POST['Cabinet_PN'])) {
+                $fields[] = "Cabinet_PN = ?";
+                $params[] = $_POST['Cabinet_PN'];
+                $types .= 's';
+            }
+
+            // Subir archivos o mantener los existentes si no se proporcionan nuevos
+            function uploadFile($fieldName, $allowedTypes) {
+                if (isset($_FILES[$fieldName]) && $_FILES[$fieldName]['error'] == UPLOAD_ERR_OK) {
+                    $fileType = mime_content_type($_FILES[$fieldName]['tmp_name']);
+                    if (in_array($fileType, $allowedTypes)) {
+                        $fileName = basename($_FILES[$fieldName]['name']);
+                        $filePath = 'uploads/' . $fileName;
+                        if (move_uploaded_file($_FILES[$fieldName]['tmp_name'], $filePath)) {
+                            return $filePath;
+                        }
+                    }
+                }
+                return null;
+            }
+
+            if ($chassis_pn_image = uploadFile('Chassis_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Chassis_PN_Image = ?";
+                $params[] = $chassis_pn_image;
+                $types .= 's';
+            }
+            if ($main_board_pn_image = uploadFile('Main_Board_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Main_Board_PN_Image = ?";
+                $params[] = $main_board_pn_image;
+                $types .= 's';
+            }
+            if ($power_board_pn_image = uploadFile('Power_Board_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Power_Board_PN_Image = ?";
+                $params[] = $power_board_pn_image;
+                $types .= 's';
+            }
+            if ($power_connector_pn_image = uploadFile('Power_Connector_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Power_Connector_PN_Image = ?";
+                $params[] = $power_connector_pn_image;
+                $types .= 's';
+            }
+            if ($fan_pn_image = uploadFile('Fan_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Fan_PN_Image = ?";
+                $params[] = $fan_pn_image;
+                $types .= 's';
+            }
+            if ($cabinet_pn_image = uploadFile('Cabinet_PN_Image', ['image/jpeg', 'image/png'])) {
+                $fields[] = "Cabinet_PN_Image = ?";
+                $params[] = $cabinet_pn_image;
+                $types .= 's';
+            }
+            if ($instructivo = uploadFile('Instructivo', ['application/pdf'])) {
+                $fields[] = "Instructivo = ?";
+                $params[] = $instructivo;
+                $types .= 's';
+            }
+            if ($instructivo_a = uploadFile('Instructivo_A', ['application/pdf'])) {
+                $fields[] = "Instructivo_A = ?";
+                $params[] = $instructivo_a;
+                $types .= 's';
+            }
+
+            if (!empty($fields)) {
+                // Construir la consulta SQL con los campos dinámicos
+                $sql = "UPDATE $table SET " . implode(', ', $fields) . " WHERE Model = ?";
+                $params[] = $model;
+                $types .= 's';
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param($types, ...$params);
+
+                if ($stmt->execute()) {
+                    echo "Producto actualizado correctamente.";
+                    header('Location: index.php');
+                    exit;
+                } else {
+                    echo "Error al actualizar el producto: " . $conn->error;
+                }
+
+                $stmt->close();
+            } else {
+                echo "No se han proporcionado datos para actualizar.";
+            }
+        } else {
+            echo "Modelo no encontrado en la tabla seleccionada.";
         }
-        return null;
-    }
-
-    // Subir archivos
-    $chassis_pn_image = uploadFile('Chassis_PN_Image', ['image/jpeg', 'image/png']);
-    $main_board_pn_image = uploadFile('Main_Board_PN_Image', ['image/jpeg', 'image/png']);
-    $power_board_pn_image = uploadFile('Power_Board_PN_Image', ['image/jpeg', 'image/png']);
-    $power_connector_pn_image = uploadFile('Power_Connector_PN_Image', ['image/jpeg', 'image/png']);
-    $fan_pn_image = uploadFile('Fan_PN_Image', ['image/jpeg', 'image/png']);
-    $cabinet_pn_image = uploadFile('Cabinet_PN_Image', ['image/jpeg', 'image/png']);
-    $instructivo = uploadFile('Instructivo', ['application/pdf']);
-    $instructivo_a = uploadFile('Instructivo_A', ['application/pdf']);
-
-    // Actualizar el producto existente basado en el modelo
-    $sql = "UPDATE $table SET 
-                `Chassis PN` = ?, 
-                `Main Board PN` = ?, 
-                `Power Board PN` = ?, 
-                `Power Connector PN` = ?, 
-                `Fan PN` = ?, 
-                `Cabinet PN` = ?,
-                `Chassis PN Image` = IFNULL(?, `Chassis PN Image`),
-                `Main Board PN Image` = IFNULL(?, `Main Board PN Image`),
-                `Power Board PN Image` = IFNULL(?, `Power Board PN Image`),
-                `Power Connector PN Image` = IFNULL(?, `Power Connector PN Image`),
-                `Fan PN Image` = IFNULL(?, `Fan PN Image`),
-                `Cabinet PN Image` = IFNULL(?, `Cabinet PN Image`),
-                `Instructivo` = IFNULL(?, `Instructivo`),
-                `Instructivo_A` = IFNULL(?, `Instructivo_A`)
-            WHERE `Model` = ?";
-    $stmt = $conn->prepare($sql);
-
-    $stmt->bind_param(
-        "sssssssssssssss",
-        $chassis_pn,
-        $main_board_pn,
-        $power_board_pn,
-        $power_connector_pn,
-        $fan_pn,
-        $cabinet_pn,
-        $chassis_pn_image,
-        $main_board_pn_image,
-        $power_board_pn_image,
-        $power_connector_pn_image,
-        $fan_pn_image,
-        $cabinet_pn_image,
-        $instructivo,
-        $instructivo_a,
-        $model
-    );
-
-    if ($stmt->execute()) {
-        echo "Producto actualizado correctamente.";
-        header('Location: index.php');
-        exit;
+        $stmt->close();
     } else {
-        echo "Error al actualizar el producto: " . $conn->error;
+        echo "Tabla seleccionada no es válida.";
     }
 
-    $stmt->close();
     $conn->close();
-} else {
-    echo "";
 }
 ?>
 
@@ -104,30 +153,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Producto</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function loadModels() {
+            var table = document.getElementById("table").value;
+            var modelSelect = document.getElementById("Model");
+
+            // Limpiar el campo de selección de modelos
+            modelSelect.innerHTML = "<option value=''>Cargando...</option>";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "get_models.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var models = JSON.parse(xhr.responseText);
+                    modelSelect.innerHTML = "";
+
+                    models.forEach(function(model) {
+                        var option = document.createElement("option");
+                        option.value = model;
+                        option.text = model;
+                        modelSelect.appendChild(option);
+                    });
+                }
+            };
+            xhr.send("table=" + table);
+        }
+    </script>
 </head>
 <body>
     <main>
         <h1>Actualizar Producto</h1>
         <form action="update_product.php" method="post" enctype="multipart/form-data">
             <label for="table">Seleccione la Tabla:</label>
-            <select name="table" id="table" required>
-                <option value="OSN">OSN</option>
-                <option value="RTN">RTN</option>
-                <option value="NE8000">NE8000</option>
-                <option value="BBU">BBU</option>
-                <option value="S12700E">S12700E</option>
-                <option value="EA5800">EA5800</option>
-                <option value="MA58">MA58</option>
-                <option value="ATN">ATN</option>
-                <option value="DC908">DC908</option>
-                <option value="E66">E66</option>
-                <option value="NE40E">NE40E</option>
-                <option value="ONT">ONT</option>
-                
+            <select name="table" id="table" required onchange="loadModels()">
+                <?php
+                foreach ($tables as $table) {
+                    echo "<option value=\"$table\">$table</option>";
+                }
+                ?>
             </select><br>
 
-            <label for="Model">Model:</label>
-            <input type="text" id="Model" name="Model" required><br>
+            <label for="Model">Seleccione el Modelo:</label>
+            <select name="Model" id="Model" required>
+                <option value="">Seleccione primero una tabla</option>
+            </select><br>
 
             <label for="Chassis_PN">Chassis PN:</label>
             <input type="text" id="Chassis_PN" name="Chassis_PN"><br>

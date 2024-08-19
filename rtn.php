@@ -30,12 +30,12 @@ $result = $conn->query($sql);
         <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
                 <td><?php echo $row['Model']; ?></td>
-                <td><?php echo $row['Chassis PN']; ?></td>
-                <td><?php echo $row['Main Board PN']; ?></td>
-                <td><?php echo $row['Power Connector PN']; ?></td>
-                <td><?php echo $row['Chassis PN Image'] ? '<img src="' . $row['Chassis PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
-                <td><?php echo $row['Main Board PN Image'] ? '<img src="' . $row['Main Board PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
-                <td><?php echo $row['Power Connector PN Image'] ? '<img src="' . $row['Power Connector PN Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
+                <td><?php echo $row['Chassis_PN']; ?></td>
+                <td><?php echo $row['Main_Board_PN']; ?></td>
+                <td><?php echo $row['Power_Connector_PN']; ?></td>
+                <td><?php echo $row['Chassis_PN_Image'] ? '<img src="' . $row['Chassis_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
+                <td><?php echo $row['Main_Board_PN_Image'] ? '<img src="' . $row['Main_Board_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
+                <td><?php echo $row['Power_Connector_PN_Image'] ? '<img src="' . $row['Power_Connector_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                 <td><?php echo $row['Instructivo'] ? '<a href="' . $row['Instructivo'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
                 <td><?php echo $row['Instructivo_A'] ? '<a href="' . $row['Instructivo_A'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
             </tr>
@@ -104,12 +104,12 @@ th {
 }
 
 tr:hover {
-    background-color: #ddd;
+    background-color: #333;
 }
 
 .thumbnail {
     width: 100px; /* Ajusta el ancho de las miniaturas */
-    height: auto; /* Ajusta la altura automáticamente */
+    height: 100px; /* Ajusta la altura automáticamente */
     cursor: pointer;
     object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recorte */
 }
@@ -148,7 +148,7 @@ tr:hover {
 
 .close:hover,
 .close:focus {
-    color: #bbb;
+    color: #333;
     text-decoration: none;
     cursor: pointer;
 }

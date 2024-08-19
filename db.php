@@ -1,8 +1,8 @@
 <?php
 function getDbConnection() {
     $servername = "localhost";
-    $username = "panda"; // Cambia a 'panda'
-    $password = "password_admin"; // La contraseña de 'panda'
+    $username = "panda"; 
+    $password = "password_admin"; 
     $dbname = "CatalogoATO";
 
     // Crear la conexión
