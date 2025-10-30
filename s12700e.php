@@ -3,7 +3,7 @@ include 'header.php';
 include 'db.php';
 
 $conn = getDbConnection();
-$sql = "SELECT * FROM S12700E";
+$sql = "SELECT * FROM s12700e";
 $result = $conn->query($sql);
 ?>
 
@@ -13,85 +13,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S12700 Productos</title>
-    <style>
-        /* Estilos para centrar la tabla */
-        .table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px; /* Ajusta el margen superior según sea necesario */
-        }
-
-        /* Estilos para la tabla */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 16px; /* Aumenta el padding para hacer las filas más grandes */
-            text-align: center;
-        }
-
-        th {
-            background-color: #333;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #333;
-            color: white; /* Cambia el color del texto al pasar el cursor */
-        }
-
-        /* Estilos para las miniaturas de imágenes */
-        .thumbnail {
-            width: 100px; /* Ajusta el ancho de las miniaturas */
-            height: 100px; /* Ajusta la altura automáticamente */
-            cursor: pointer;
-            object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recorte */
-        }
-
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%; /* Ajusta el tamaño de la imagen */
-            max-height: 90%; /* Asegúrate de que la imagen se ajuste completamente */
-            object-fit: contain; /* Ajusta la imagen dentro del contenedor */
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="substyle.css">
 </head>
 <body>
     <h1>S12700 Productos</h1>
@@ -111,8 +33,8 @@ $result = $conn->query($sql);
                     <th>Chassis Image</th>
                     <th>Main Board Image</th>
                     <th>Power Connector Image</th>
-                    <th>Instructivo</th>
-                    <th>Instructivo Ensamble</th>
+                    <th>SOP Pruebas</th>
+                    <th>SOP Ensamble</th>
                 </tr>
             </thead>
             <tbody>

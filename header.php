@@ -9,7 +9,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/catalogo/styles.css">
 </head>
 <body>
     <header>
@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li><a href="add_product.php">Agregar Nuevo Producto</a></li>
                     <li><a href="update_product.php">Actualizar Producto</a></li>
                 <?php endif; ?>
-                <li><a href="logout.php">Logout</a></li>
+                <!--<li><a href="logout.php">Logout</a></li>-->
             </ul>
         </nav>
     </header>

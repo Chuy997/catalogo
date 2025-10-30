@@ -1,0 +1,482 @@
+/* General Styles */
+body {
+    background-image: url('HKwall.jpg');
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: #ffffff;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(31, 31, 31, 0.8); /* Fondo con transparencia */
+    width: 100%;
+    padding: 20px 0;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #bbbbbb;
+}
+
+/* Main Content Styles */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    width: 100%; 
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+/* Product Grid Styles */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.product-item {
+    background-color: rgba(31, 31, 31, 0.8); /* Fondo con transparencia */
+    padding: 20px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+    border: 1px solid #333;
+}
+
+.product-item:hover {
+    background-color: rgba(51, 51, 51, 0.8); /* Fondo un poco más claro con transparencia */
+    transform: translateY(-5px);
+}
+
+.product-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+    display: block; /* Hace que el enlace ocupe todo el área del producto */
+    height: 100%; /* Asegura que el enlace ocupe toda la altura del producto */
+    width: 100%; /* Asegura que el enlace ocupe toda la anchura del producto */
+}
+
+.product-item a:hover {
+    color: #bbbbbb;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background-color: rgba(31, 31, 31, 0.8); /* Fondo con transparencia */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    width: 100%;
+}
+
+label {
+    margin: 15px 0 5px;
+    width: 100%;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="file"],
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: rgba(51, 51, 51, 0.8); /* Fondo con transparencia */
+    color: #fff;
+    width: 100%;
+}
+
+/* Button Styles */
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(98, 0, 238, 0.8); /* Fondo con transparencia */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: rgba(55, 0, 179, 0.8); /* Fondo más oscuro con transparencia */
+    transform: translateY(-3px);
+}
+
+/* Link as Button */
+a.button-link {
+    display: inline-block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: rgba(98, 0, 238, 0.8); /* Fondo con transparencia */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none; /* Sin subrayado */
+}
+
+a.button-link:hover {
+    background-color: rgba(55, 0, 179, 0.8); /* Fondo más oscuro con transparencia */
+    transform: translateY(-3px);
+    color: #fff; /* Mantener el texto blanco */
+}
+
+/* Validation Form Styles */
+.validation-form {
+    margin-top: 20px; /* Espacio superior */
+    padding: 10px; /* Espaciado interno */
+    background-color: rgba(18, 18, 18, 0); /* Fondo oscuro con transparencia */
+    border-radius: 8px; /* Bordes redondeados */
+    text-align: center; /* Centrar texto */
+}
+
+.validation-form form {
+    display: flex; /* Usar flexbox para layout del formulario */
+    flex-direction: column; /* Disposición vertical de los elementos */
+    align-items: center; /* Centrar elementos horizontalmente */
+}
+
+.validation-form label {
+    margin-bottom: 10px; /* Espacio debajo de la etiqueta */
+    color: #fff; /* Color blanco para la etiqueta */
+    text-align: center;
+}
+
+.validation-form input[type="text"] {
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio debajo del campo */
+    border: 1px solid #333; /* Borde del campo */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro con transparencia */
+    color: #fff; /* Texto blanco */
+    width: 100%; /* Ancho completo del campo */
+    max-width: 400px; /* Ancho máximo del campo */
+}
+
+.validation-form button {
+    padding: 12px; /* Espaciado interno */
+    border: none; /* Quitar borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: rgba(98, 0, 238, 0.8); /* Color de fondo con transparencia */
+    color: #fff; /* Color del texto del botón */
+    font-size: 16px; /* Tamaño de la fuente del botón */
+    cursor: pointer; /* Cambia el cursor al pasar por el botón */
+    width: 100%; /* Ancho completo del botón */
+    max-width: 200px; /* Ancho máximo del botón */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves para cambios de estilo */
+}
+
+.validation-form button:hover {
+    background-color: rgba(55, 0, 179, 0.8); /* Color de fondo al pasar el ratón */
+    transform: translateY(-3px); /* Mover el botón hacia arriba al pasar el ratón */
+}
+
+/* Estilos para mensajes de validación */
+.success-message {
+    color: #4CAF50; /* Color verde para mensaje de éxito */
+    margin-top: 20px; /* Espacio superior */
+}
+
+.error-message {
+    color: #f44336; /* Color rojo para mensaje de error */
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: rgba(18, 18, 18, 0.8); /* Fondo oscuro con transparencia */
+    color: white;
+    width: 100%;
+    margin-top: auto;
+    
+    /* Posicionar el footer al final del contenido, pero no fijo al fondo de la página */
+}
+/* Media Queries for Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+    /* Ajusta el padding y el espaciado en pantallas medianas */
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Reduce el tamaño mínimo */
+        gap: 20px;
+    }
+
+    form {
+        padding: 20px;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Ajustes adicionales para pantallas pequeñas */
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        display: block;
+        text-align: center;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+
+    form {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    button, a.button-link {
+        font-size: 14px; /* Reduce el tamaño del texto en botones */
+        padding: 10px;
+    }
+}
+/* Media Queries for Tablets (Max-width 1024px) */
+@media only screen and (max-width: 1024px) {
+
+    /* Fondo completo que cubre toda la pantalla */
+    body {
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen de fondo */
+    }
+
+    /* Espaciado adecuado entre los botones */
+    button, a.button-link {
+        margin-bottom: 20px; /* Añadir espacio entre botones */
+        padding: 15px 20px;  /* Aumentar el padding para mejorar el toque en tabletas */
+    }
+
+    /* Header con menú reorganizado */
+    nav ul {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block; /* Coloca los elementos del menú en vertical */
+        margin: 10px 0; /* Añadir espacio entre los elementos del menú */
+    }
+
+    nav ul li a {
+        font-size: 18px; /* Aumentar el tamaño de la fuente del menú */
+    }
+
+    /* Ajustes en la cuadrícula de productos */
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Aumentar el ancho mínimo de los productos */
+        gap: 25px; /* Mayor separación entre los productos */
+    }
+
+    /* Formulario más accesible y espacioso */
+    form {
+        padding: 30px; /* Aumentar el padding para más espacio interno */
+        max-width: 80%; /* Aumentar ligeramente el ancho máximo */
+    }
+
+    label {
+        font-size: 16px; /* Aumentar el tamaño del texto de las etiquetas */
+    }
+
+    input[type="text"], input[type="file"], select {
+        padding: 15px; /* Aumentar el padding de los campos del formulario */
+        margin-bottom: 20px; /* Más espacio entre los campos */
+    }
+
+    /* Footer espaciado */
+    footer {
+        padding: 15px 0; /* Aumentar el padding para un mejor espaciado */
+    }
+}
+/* Media Queries for Tablets (Max-width 1024px) */
+@media only screen and (max-width: 1024px) {
+
+    /* Fondo completo que cubre toda la pantalla */
+    body {
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen de fondo */
+        padding: 0 15px; /* Añadir un poco de padding lateral para mejorar el espaciado */
+    }
+
+    /* Espaciado adecuado entre los botones */
+    button, a.button-link {
+        margin-bottom: 15px; /* Ajustar espacio entre botones */
+        padding: 12px 18px;  /* Ajustar padding para tabletas */
+        font-size: 16px; /* Aumentar el tamaño del texto para mejor visibilidad */
+    }
+
+    /* Header con menú reorganizado */
+    nav ul {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block; /* Coloca los elementos del menú en vertical */
+        margin: 10px 0; /* Añadir espacio entre los elementos del menú */
+    }
+
+    nav ul li a {
+        font-size: 18px; /* Aumentar el tamaño de la fuente del menú */
+        padding: 10px 0; /* Espaciado más cómodo para tocar en dispositivos táctiles */
+    }
+
+    /* Ajustes en la cuadrícula de productos */
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajustar el tamaño mínimo de las columnas */
+        gap: 20px; /* Menor separación entre productos */
+    }
+
+    /* Formulario más accesible y espacioso */
+    form {
+        padding: 25px; /* Reducir un poco el padding */
+        max-width: 90%; /* Aumentar el ancho máximo para aprovechar el espacio */
+    }
+
+    label {
+        font-size: 16px; /* Aumentar el tamaño del texto de las etiquetas */
+    }
+
+    input[type="text"], input[type="file"], select {
+        padding: 12px; /* Reducir el padding de los campos para una mejor distribución */
+        margin-bottom: 15px; /* Ajustar el espacio entre los campos */
+    }
+
+    /* Footer espaciado */
+    footer {
+        padding: 15px 0;
+        font-size: 14px; /* Aumentar ligeramente el tamaño del texto */
+    }
+}
+
+/* Media Queries for Mobile Devices (Max-width 768px) */
+@media only screen and (max-width: 768px) {
+
+    /* Fondo completo y ajuste de la pantalla */
+    body {
+        background-size: cover;
+        background-position: center;
+        padding: 0 10px; /* Padding lateral para móviles */
+    }
+
+    /* Botones accesibles en móviles */
+    button, a.button-link {
+        margin-bottom: 10px;
+        padding: 12px 15px; /* Reducir el padding en móviles */
+        font-size: 14px; /* Ajustar tamaño del texto */
+    }
+
+    /* Menú del header en móviles */
+    nav ul {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 8px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px; /* Ajustar el tamaño de la fuente del menú */
+        padding: 10px 0;
+    }
+
+    /* Cuadrícula de productos optimizada para móviles */
+    .product-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+        gap: 15px; /* Menor separación entre productos */
+    }
+
+    /* Formularios más compactos */
+    form {
+        padding: 20px;
+        max-width: 100%; /* Usar todo el ancho disponible en móviles */
+    }
+
+    label {
+        font-size: 14px; /* Ajustar el tamaño del texto en móviles */
+    }
+
+    input[type="text"], input[type="file"], select {
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 14px; /* Reducir el tamaño del texto */
+    }
+
+    /* Footer con mayor separación */
+    footer {
+        padding: 10px 0;
+        font-size: 12px; /* Reducir el tamaño del texto en móviles */
+    }
+}

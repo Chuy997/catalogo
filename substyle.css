@@ -1,0 +1,217 @@
+
+    /* Estilos generales */
+    header {
+        background-color: rgba(31, 31, 31, 0.5);
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    body {
+        background-image: url('red.jpg');
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #ffffff;
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Barra de búsqueda */
+    .search-bar {
+        width: 50%; /* Ancho por defecto */
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .search-bar::placeholder {
+        color: #999;
+    }
+
+    /* Botón de búsqueda */
+    .search-button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    /* Flex para el contenido del header (incluyendo barra de búsqueda) */
+    .header-content {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Estilos para centrar la tabla */
+    .table-container {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+        overflow-x: auto; /* Para permitir scroll horizontal si es necesario */
+    }
+
+    /* Estilos para la tabla */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: auto; /* Ajusta las columnas según el contenido */
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px; /* Reduce el padding para dispositivos móviles */
+        text-align: center;
+    }
+
+    th {
+        background-color: #333;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #333;
+        color: white;
+    }
+
+    /* Estilos para las miniaturas de imágenes */
+    .thumbnail {
+        width: 80px; /* Ajusta el ancho de las miniaturas */
+        height: 80px; /* Ajusta la altura automáticamente */
+        cursor: pointer;
+        object-fit: contain;
+    }
+
+    /* Estilos para el modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 90%; /* Ajusta el tamaño de la imagen */
+        max-height: 90%; /* Asegúrate de que la imagen se ajuste completamente */
+        object-fit: contain;
+    }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px 0;
+        background-color: rgba(18, 18, 18, 0.0); /* Fondo oscuro con transparencia */
+        color: white;
+        width: 100%;
+        margin-top: auto;
+    }
+
+  /* Mejora para permitir el zoom y una buena experiencia de usuario */
+html {
+    touch-action: manipulation;
+}
+
+body {
+    -webkit-text-size-adjust: 100%; /* Permite el zoom sin distorsionar el texto */
+    text-size-adjust: 100%; /* Para otros navegadores */
+    overflow-x: hidden; /* Evita scroll innecesario fuera del body */
+}
+
+/* Permitir zoom out y ajustar la experiencia en pantallas táctiles */
+meta[name="viewport"] {
+    content: "width=device-width, initial-scale=.5, maximum-scale=2, minimum-scale=0.2, user-scalable=yes";
+}
+
+html, body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%; /* Permitir zoom sin distorsionar el texto */
+    text-size-adjust: 100%;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* Contenedor scrollable para tablas */
+    .table-container {
+        overflow-x: auto; /* Permitir desplazamiento horizontal */
+        -webkit-overflow-scrolling: touch; /* Desplazamiento suave en pantallas táctiles */
+        max-width: 100%; /* Permitir que la tabla ocupe todo el ancho disponible */
+    }
+
+    table {
+        width: 100%; /* La tabla ocupa todo el ancho disponible */
+        table-layout: auto; /* El ancho de las columnas se ajusta automáticamente */
+        white-space: nowrap; /* Evitar que el contenido se desborde o haga salto de línea */
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+}
+
+
+   

@@ -3,7 +3,7 @@ include 'header.php';
 include 'db.php';
 
 $conn = getDbConnection();
-$sql = "SELECT * FROM EA5800";
+$sql = "SELECT * FROM ea5800";
 $result = $conn->query($sql);
 ?>
 
@@ -13,85 +13,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EA58 Productos</title>
-    <style>
-        /* Estilos para centrar la tabla */
-        .table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px; /* Ajusta el margen superior según sea necesario */
-        }
-
-        /* Estilos para la tabla */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 16px; /* Aumenta el padding para hacer las filas más grandes */
-            text-align: center;
-        }
-
-        th {
-            background-color: #333;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #333;
-            color: white; /* Cambia el color del texto al pasar el cursor */
-        }
-
-        /* Estilos para las miniaturas de imágenes */
-        .thumbnail {
-            width: 100px; /* Ajusta el ancho de las miniaturas */
-            height: 100px; /* Ajusta la altura automáticamente */
-            cursor: pointer;
-            object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recorte */
-        }
-
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%; /* Ajusta el tamaño de la imagen */
-            max-height: 90%; /* Asegúrate de que la imagen se ajuste completamente */
-            object-fit: contain; /* Ajusta la imagen dentro del contenedor */
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="substyle.css">
 </head>
 <body>
     <h1>EA58 Productos</h1>
@@ -106,14 +28,13 @@ $result = $conn->query($sql);
                     <th>Model</th>
                     <th>Chassis PN</th>
                     <th>Main Board PN</th>
+                    <th>Power Board PN</th>
                     <th>Power Connector PN</th>
-                    <th>Cabinet PN</th>
                     <th>Chassis Image</th>
                     <th>Main Board Image</th>
                     <th>Power Connector Image</th>
-                    <th>Cabinet Image</th>
-                    <th>Instructivo</th>
-                    <th>Instructivo Ensamble</th>
+                    <th>SOP Pruebas</th>
+                    <th>SOP Ensamble</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,12 +43,11 @@ $result = $conn->query($sql);
                         <td><?php echo $row['Model']; ?></td>
                         <td><?php echo $row['Chassis_PN']; ?></td>
                         <td><?php echo $row['Main_Board_PN']; ?></td>
+                        <td><?php echo $row['Power_Board_PN']; ?></td>
                         <td><?php echo $row['Power_Connector_PN']; ?></td>
-                        <td><?php echo $row['Cabinet_PN']; ?></td>
                         <td><?php echo $row['Chassis_PN_Image'] ? '<img src="' . $row['Chassis_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                         <td><?php echo $row['Main_Board_PN_Image'] ? '<img src="' . $row['Main_Board_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                         <td><?php echo $row['Power_Connector_PN_Image'] ? '<img src="' . $row['Power_Connector_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
-                        <td><?php echo $row['Cabinet_PN_Image'] ? '<img src="' . $row['Cabinet_PN_Image'] . '" class="thumbnail" onclick="expandImage(this)">' : 'No Image'; ?></td>
                         <td><?php echo $row['Instructivo'] ? '<a href="' . $row['Instructivo'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
                         <td><?php echo $row['Instructivo_A'] ? '<a href="' . $row['Instructivo_A'] . '" target="_blank">Ver Instructivo</a>' : 'No Instructivo'; ?></td>
                     </tr>

@@ -3,7 +3,7 @@ include 'header.php';
 include 'db.php';
 
 $conn = getDbConnection();
-$sql = "SELECT * FROM E66";
+$sql = "SELECT * FROM e66";
 $result = $conn->query($sql);
 ?>
 
@@ -24,8 +24,8 @@ $result = $conn->query($sql);
             <th>Main Board PN Image</th>            
             <th>Power Connector PN Image</th>            
             <th>Cabinet PN Image</th>
-            <th>Instructivo</th>
-            <th>Instructivo Ensamble</th>
+            <th>SOP Pruebas</th>
+            <th>SOP Ensamble</th>
         </tr>
     </thead>
     <tbody>
@@ -89,72 +89,6 @@ function closeModal() {
 }
 </script>
 
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 16px; /* Aumenta el padding para hacer las filas más grandes */
-    text-align: left;
-}
-
-th {
-    background-color: #333;
-    color: white;
-}
-
-tr:hover {
-    background-color: #333;
-}
-
-.thumbnail {
-    width: 100px; /* Ajusta el ancho de las miniaturas */
-    height: 100px; /* Ajusta la altura automáticamente */
-    cursor: pointer;
-    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recorte */
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 90%; /* Ajusta el tamaño de la imagen */
-    max-height: 90%; /* Asegúrate de que la imagen se ajuste completamente */
-    object-fit: contain; /* Ajusta la imagen dentro del contenedor */
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="substyle.css">
 
 <?php include 'footer.php'; ?>
